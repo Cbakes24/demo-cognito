@@ -132,7 +132,7 @@ function Form(props) {
               >Sign Up</span>
             </p>
             <p>
-              Forget your password? <span className='p-3'
+              Forget your password? <span className='p-4'
                 onClick={() => updateFormType('forgotPassword')}
               >Reset Password</span>
             </p>
