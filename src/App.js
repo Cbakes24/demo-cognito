@@ -1,30 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Router from './Router';
-import logo from './logo.svg';
-import {Amplify} from 'aws-amplify'
-import awsmobile from './aws-exports.js'
-import Form from './components/Form'
-Amplify.configure(awsmobile)
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Router from "./Router";
+import logo from "./logo.svg";
+import { Amplify } from "aws-amplify";
+import awsmobile from "./aws-exports.js";
+import Form from "./components/Form";
+import { Route, Routes, Link } from "react-router-dom";
+import Public from "./pages/Public";
+import Protected from "./pages/Protected";
+import Profile from "./pages/Profile";
+import Nav from "./pages/Nav";
+Amplify.configure(awsmobile);
 
-ReactDOM.render(<Router />, document.getElementById('root'));
+ReactDOM.render(<Router />, document.getElementById("root"));
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Form />
-        <p className="text-green-300">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Nav />
+        <Routes>
+          <Route exact path="/public" element={<Public />} />
+          <Route exact path="/profile" element={<Profile />} />{" "}
+          <Route exact path="/protected" element={<Protected />} />{" "}
+        </Routes>
       </header>
     </div>
   );

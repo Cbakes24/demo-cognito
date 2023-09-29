@@ -35,7 +35,9 @@ async function signIn({ username, password }, setUser) {
   try {
     const user = await Auth.signIn(username, password)
     const userInfo = { username: user.username, ...user.attributes }
+    console.log(userInfo, "USER INFOOOO")
     setUser(userInfo)
+    console.log(user, "THE USER")
   } catch (err) {
     console.log('error signing up..', err)
   }
@@ -61,6 +63,7 @@ async function forgotPasswordSubmit({ username, confirmationCode, password }, up
 
 function Form(props) {
   const [formType, updateFormType] = useState('signIn')
+
   const [formState, updateFormState] = useState(initialFormState)
   function updateForm(event) {
     const newFormState = {
