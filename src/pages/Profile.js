@@ -4,6 +4,8 @@ import Container from '../layout/Container'
 import Form from '../components/Form'
 
 function Profile() {
+
+
   useEffect(() => {
     checkUser()
     Hub.listen('auth', (data) => {
@@ -13,7 +15,10 @@ function Profile() {
       }
     })
   }, [])
+
+
   const [user, setUser] = useState(null) 
+  
   async function checkUser() {
     try {
       const data = await Auth.currentUserPoolUser()
@@ -26,12 +31,12 @@ function Profile() {
       .catch(err => console.log('error signing out: ', err))
   }
   if (user) {
-    return (
-      <Container>
-        <h1>Profile</h1>
-        <h2>Username: {user.username}</h2>
-        <h3>Email: {user.email}</h3>
-        <button onClick={signOut}>Sign Out</button>
+    return !user ? <p>Loading...</p> : (
+      <Container >
+        <h1 className="text-red-100">Profile</h1>
+        <h2 className="text-red-100">Username: {user.username}</h2>
+        <h3 className="text-red-100">Email: {user.email}</h3>
+        <button className="text-red-100" onClick={signOut}>Sign Out</button>
       </Container>
     );
   }
