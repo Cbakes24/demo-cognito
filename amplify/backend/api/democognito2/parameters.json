@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "democognito2",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authdemocognito2e9c3f299",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
